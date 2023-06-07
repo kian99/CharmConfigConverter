@@ -58,7 +58,7 @@ func main() {
 func terraform_print_vars(config *charm.Config, w io.Writer) error {
 
 	for name, option := range config.Options {
-		_, err := fmt.Fprintf(w, "variable \"%s\" {\n\ttype = %s", name, type_map[option.Type])
+		_, err := fmt.Fprintf(w, "variable \"%s\" {\n\ttype = %s", strings.Replace(name, ".", "_", -1), type_map[option.Type])
 		if err != nil {
 			return err
 		}
@@ -87,7 +87,7 @@ func terraform_print_vars(config *charm.Config, w io.Writer) error {
 				return err
 			}
 		}
-		_, err = fmt.Fprintf(w, "\n}\n")
+		_, err = fmt.Fprintf(w, "\n}\n\n")
 		if err != nil {
 			return err
 		}

@@ -1,4 +1,4 @@
-module config_converter
+module github.com/kian99/CharmConfigConverter
 
 require github.com/juju/charm/v9 v9.0.6
 
